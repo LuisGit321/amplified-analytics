@@ -1,0 +1,43 @@
+<style>
+.shedule-form, .sign-in-form, .sign-up-form {
+  height: auto;
+}
+.content-wrap > .content {
+  height: auto;
+  min-height: 520px;
+}
+
+</style>
+
+<div class="text-head"><h1>Download White Paper</h1><hr /></div>
+<div class="sign-up-form">
+  <% form_for @paper_download do |f| -%>
+    <table>
+      <tr>
+        <td>
+          <%= f.error_messages %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="user_email">Email <span style="color:#666666;">*</span></label>
+          <%= f.text_field :email, :tabindex=>"1", :style=>"width: 400px; margin-left: 0px;", :class=>"editbox1" %>
+          <label for="user_first_name">First Name <span class="normal"> *</span></label>
+          <%= f.text_field :first_name, :tabindex=>"4", :style=>"width: 400px; margin-left: 0px;", :maxlength=>"100", :class=>"editbox1" %>
+          <label for="user_last_name">Last Name <span class="normal"> *</span></label>
+          <%= f.text_field :last_name, :tabindex=>"4", :style=>"width: 400px; margin-left: 0px;", :maxlength=>"100", :class=>"editbox1" %>          
+          <label for="user_company">Company <span class="normal"> *</span></label>
+          <%= f.text_field :company, :tabindex=>"5", :style=>"width: 400px; margin-left: 0px;", :maxlength=>"100", :class=>"editbox1" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= nice_captcha %>
+          <p/>
+          <%= f.submit "Download", :tabindex=>"6", :style=>"width: 160px;", :class=>"actionButton", :id => "submit" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+<div style="clear:both;height:20px;"></div>

@@ -1,0 +1,11 @@
+Dear <%= @user.first_name %>,<br/>
+New customer reviews were published for the following products since your last visit, that could change their customers perception:
+<br/>
+<br/>
+
+<% for product in @products %>
+  <%= Product.find(product).try(:name) %>
+  <br/>
+<% end %>
+<br/>
+Please follow the <%= link_to 'link to', product_groups_url %> assess the changes.

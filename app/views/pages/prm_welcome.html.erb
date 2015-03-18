@@ -1,0 +1,34 @@
+<% @page_title = 'Customer Satisfaction Research - Amplified Analytics' -%>
+<% content_for :top_content_area do -%>
+    <div id="content_top">
+          <div id="content_area">
+            <h1 id="welcometoprm">Welcome to Product Reputation Market Intelligence</h1>
+          </div>
+      <div id="message_area">
+      </div>
+    </div>
+<% end -%>
+<div id="content_middle">
+  <br />
+  <div class="clearer"></div>
+  <ul id="welcome_prm_content">
+    <li>
+      If you want to check a reputation of a specific product please click <a href="<%= v2p_accelerator_demo_path -%>">&nbsp;&nbsp;<img height="20px" style="position:relative; top:5px;" src="/images/prm_welcome/v2p_btn.png" alt="V2P" />&nbsp;&nbsp;</a> and start entering the name of this product into the search window.
+    </li>
+    <li>
+        If you want to analyze and compare a group of products within the same category
+      please click <a href="<%= categories_path -%>">&nbsp;&nbsp;<img style="position:relative; top:3px;" src="/images/prm_welcome/prmir_btn.png" height="20px" alt="PRMIR" />&nbsp;&nbsp;</a> to select a Category of Products you want. You can "drill down" into any Top Category by clicking on it until
+      you see orange "Subscribe" category you want. Or you can search a name of any product in the Search window on top of the next page, and click "Search" to access
+      the category that products belongs.
+    </li>
+  </ul>
+
+  <div id="welcome_prm_tour">
+    <iframe src="http://player.vimeo.com/video/26076095?title=0&amp;byline=0&amp;portrait=0" width="351" height="263" frameborder="0"></iframe>
+  </div>
+  <div id="welcome_prm_about_tour"><p><b>This short (3.5 min) video will help you to navigate more comfortably</b></p></div>
+  <div class="clearer"></div>
+
+
+  <div id="content_area" style="margin-top:40px;"><p>Good luck and please tell us how we can improve PRMIR usability by using <%= link_to 'Contact Us', new_user_message_path, :class=>"blue" -%> form.</p></div>
+</div>

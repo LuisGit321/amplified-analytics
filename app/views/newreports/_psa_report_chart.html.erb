@@ -1,0 +1,133 @@
+<div class="cia-ico-position">
+<div id="icon-legend-cia">
+  <img alt="<%= product_info["CUSTOMER SATISFACTION INDEX"].round(1) %>" src="/images/widget/dial/<%= product_info["CUSTOMER SATISFACTION INDEX"].round(1) %>.gif">
+</div>
+</div>
+<%= javascript_include_tag "highcharts/highcharts", "highcharts/themes/gray", "highcharts/modules/exporting"  %>
+
+<script type="text/javascript">
+
+  var chart;
+  $(document).ready(function() {
+    chart = new Highcharts.Chart({
+      chart: {
+        renderTo: '<%= chart_container %>',
+        zoomType: 'xy'
+      },
+      title: {
+        text: 'Customer Intelligence Analysis Product: <%= escape_javascript product_info["PRODUCT NAME"] %>'
+      },
+      subtitle: {
+        text: 'Number of reviews: <%= product_info["NUMBER OF REVIEWS"] %>, Total number of opinions expressed: <%= product_info[:opionions_amount] %>'
+      },
+      xAxis: [{
+          categories: [<%= attributes_info.map{|i|"'#{i[:attribute]}'"}.join(",") %>],
+          labels: {
+            rotation: -45,
+            align: 'right'
+         }
+        }],
+      yAxis: [{ // Primary yAxis
+          labels: {
+            formatter: function() {
+              return this.value +'';
+            },
+            style: {
+              color: '#89A54E'
+            }
+          },
+          title: {
+            text: 'Opinion score',
+            style: {
+              color: '#89A54E'
+            }
+          }
+        }, { // Secondary yAxis
+          title: {
+            text: 'Opinions expressed',
+            style: {
+              color: "#ffffff"//'#4572A7'
+            }
+          },
+          labels: {
+            formatter: function() {
+              return this.value +' %';
+            },
+            style: {
+              color: "#ffffff"//'#4572A7'
+            }
+          },
+          stackLabels: {
+            enabled: true,
+            formatter: function() {
+              return ''+ (Math.round (this.total*1) / 1) +' %';
+            },
+            style: {
+              fontWeight: 'bold',
+              color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+          },
+          opposite: true
+        }],
+      tooltip: {
+        formatter: function() {
+          if (this.series.name != 'Opinion score') {
+            return false;
+          }
+          return ''+
+            this.x +': '+ this.y +
+            (this.series.name == 'Opinion score' ? ' score' : ' %');
+        }
+      },
+      legend: {
+        layout: 'horizontal',
+        align: 'center',
+        x: 0,
+        verticalAlign: 'bottom',
+        y: 0,
+        floating: false,
+        backgroundColor: '#FFFFFF'
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          dataLabels: {
+            enabled: false,//true,
+            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+          },
+          cursor: 'pointer',
+          point: {
+            events: {
+              click: function() {
+                //alert(this.link);
+                window.open(this.link);
+                self.focus();
+              }
+            }
+          }
+        }
+      },
+      series: [{
+          name: 'Negative opinions',
+          color: '#bd6a6a',
+          type: 'column',
+          yAxis: 1,
+          data: [<%= attributes_info.map{|i|"{y: #{(i[:negative_opinions].to_f/product_info[:opionions_amount]*100).round(0)}, link: '#{escape_javascript i[:link]}'}"}.join(",") %>] },
+        {
+          name: 'Positive opinions',
+          color: '#4572A7',
+          type: 'column',
+          yAxis: 1,
+          data: [<%= attributes_info.map{|i|"{y: #{(i[:positive_opinions].to_f/product_info[:opionions_amount]*100).round(0)}, link: '#{escape_javascript i[:link]}'}"}.join(",") %>] },
+        {
+          name: 'Opinion score',
+          color: '#89A54E',
+          type: 'spline',
+          data: [<%= attributes_info.map{|i|"#{i[:opinion_score]}"}.join(",") %>]
+        }]
+    });
+
+
+  });
+
+</script>

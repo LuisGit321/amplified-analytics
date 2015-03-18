@@ -1,0 +1,118 @@
+<% content_for :header do -%>
+  <script src="/javascripts/jquery.tabs.pack.js" type="text/javascript"></script>
+  <script type="text/javascript">
+          $(function() {
+                $('#tabs-products').tabs({ fxFade: true, fxSpeed: 'slow' });
+								$(".watch-video").click(function() {
+									$.fancybox({
+										'padding'		: 0,
+										'autoScale'		: false,
+										'transitionIn'	: 'none',
+										'transitionOut'	: 'none',
+										'title'			: this.title,
+										'width'			: 640,
+										'height'		: 385,
+										'href'			: this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+										'type'			: 'swf',
+										'swf'			: {
+										'wmode'				: 'transparent',
+										'allowfullscreen'	: 'true'
+										}
+									});
+
+									return false;
+								});
+          });
+  </script>
+  <link rel="stylesheet" href="/css/tab.css" type="text/css" media="print, projection, screen">
+<% end -%>
+<%
+  @menu_current = "products"
+  @page_title = "Products - Market Intelligence"
+%>
+<div class="share-icons" style="left:820px">
+      <div class="facebook"><a href="http://www.facebook.com/home.php#!/pages/Amplified-Analytics/125557687467210" title="Facebook"></a></div>
+      <div class="mail"><a href="mailto:support@amplifiedanalytics.com" title="Mail"></a></div>
+      <div class="twitter"><a href="http://twitter.com/piplzchoice" title="Twitter"></a></div>
+      <!-- <div class="fav"><a href="#" title="FAV"></a></div>
+      <div class="plus"><a href="#" title="Plus"></a></div> -->
+</div>
+<div id="tabs-products">
+	<ul>
+    	<li class="first"><a href="#CI">Customer Intelligence</a></li>
+        <li><a href="#MI">Market Intelligence</a></li>
+        <li class="last"><a href="#BEA">Brand Equity Analysis</a></li>
+        <li class="last"><a href="#reputation">Product Reputation Monitor</a></li>
+    </ul>
+    <div id="CI">
+      <!-- <img src="/images/ScrShoot-CI.jpg" alt="Customer Intelligence" /> -->
+      <img style='margin-left: 120px;' src="/images/opinion_mining_f.jpg" border="0" width="266" height="280" alt="Customer Intelligence" />
+    	<p>
+    	  We help product marketing professionals to manage effectiveness of marketing communications based on detailed analysis of language used by their customers to describe their experience with the products. We provide intelligence to create content that resonates with targeted consumer segments. 
+        <br/><br/>
+        Since the focus is on the customer experience instead of a product,
+ insight is gained on the attributes of the product that are important to
+ the customers.  With this new insight, product planning, sales forecasting
+ and life cycle monitoring become more credible and reliable.
+      </p>
+			<div class="video-preview">
+				<a class="watch-video" href="http://www.youtube.com/watch?v=pG7J1QOuvJg&autoplay=1">
+					<img src="/images/video_thumb.png" border="0" alt="Customer Intelligence" width="110" height="84" />
+				</a>
+			</div>
+      <div style="clear:both"></div>
+<!--      <iframe width="560" height="315" src="http://www.youtube.com/embed/pG7J1QOuvJg" frameborder="0" allowfullscreen></iframe>  -->
+    </div>
+    <div id="MI">
+    	<img src="/images/market_integellince.png" style="padding 0; margin: 0 0 0 155px;" alt="Customer Intelligence" />
+    	<p>Why did a comparative product succeed or fail?  What features did the
+ manufacturer invest money in that failed to make an impact on customers?
+ Customer experience is more than results gleaned from analysis of a
+ collection of keywords and phrases.  Amplified Analytics is engineered to
+ learn what attributes of a product are important to the customer.
+ Analysis doesn’t require thinking of potential keywords, linking words
+ into phrases, testing them and then teaching the system ways to analyze
+ the data.  Tens of thousands of products have already been analyzed and
+ customer opinions verified.  In choosing from these products, referencing
+ current customer content and a historical database of millions of customer
+ generated comments, an insightful market report is less than 24 hours away.</p>
+			<div class="video-preview">
+				<a class="watch-video" href="http://www.youtube.com/watch?v=JxhUAp6Q-2g&autoplay=1">
+					<img src="/images/market_integellince_thumb.png" border="0" alt="Customer Intelligence" width="110" height="84" />
+				</a>
+			</div>
+    </div>
+    <div id="BEA">
+    	<img src="/images/ScrShoot-BEA.jpg" alt="Customer Intelligence" />
+    	<p>Isolate the reasons certain items in a product line are beneficial or
+ detrimental to the overall brand.  Tens of thousands of cataloged items,
+ both comparative and competitive, and insightful customer content offer
+ insight on customer opinion.  No surveys, keywords, phrases, software
+ training or weeks of waiting are required to learn more about your or your
+ competitors’ brands.  Results are overnight.
+<br/><br/>
+
+Advertising can help sell good products.  Customer acceptance builds great
+ brands.</p>
+    </div>
+
+  <div id="reputation">
+    	<img src="/images/product_reputation.png" alt="Customer Intelligence" style='margin-left: 25px;'/>
+    	<p style="width: 440px; margin: 0;">Discover the competitive position of a product reputation within its category and zoom in
+          on filtered verbatim access to learn the root cause of specific scores.
+          Product Reputation measures the difference between customer expectations and
+          their actual experience with the product. We compare these products using a
+          <%= link_to "common methodology", products_methodology_path %>
+          of measuring their Functionality, Reliability and Support reputations
+       </p>
+			<div class="video-preview">
+				<a class="watch-video" href="http://www.youtube.com/watch?v=e8l0f1078D8&autoplay=1">
+					<img src="/images/product_reputation_thumb.png" border="0" alt="Customer Intelligence" width="110" height="84" />
+				</a>
+			</div>
+    </div>
+</div>
+<div class="white-content-box"></div>
+<div class="BTN-case-study"><a href="<%= new_paper_download_path %>"><img src="/images/button-download-paper.png" alt="Download White Paper" border="0" /></a></div>
+<div class="BTN-case-study" style="left: 414px;"><a href="/Products/case_studies"><img src="/images/button-case-studies.png" alt="Download White Paper" border="0" /></a></div>
+<div class="BTN-shedule-live-demo" style="left: 678px;"><a href="/Contact-Us?schedule_demo=true"><img src="/images/button-schedule-demo.png" alt="Case Study" border="0" /></a></div>
